@@ -3,7 +3,7 @@ kind: ConfigMap
 data:
   AWS_BUCKET: cdr-tontnm
   AWS_PROFILE: default
-  AWS_REGION: us-west-1
+  AWS_REGION: us-east-1
   JWT_SECRET: hi
   POSTGRES_DB: postgres
   POSTGRES_HOST: rds.cosrzdkjoln1.us-east-1.rds.amazonaws.com
