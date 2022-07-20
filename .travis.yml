@@ -1,0 +1,22 @@
+language: minimal
+
+services: docker
+
+# Pre-testing installs
+install:
+  - echo "nothing needs to be installed"
+
+# Scripts to be run such as tests
+before_script:
+  - echo "no tests"
+
+script:
+  - docker -v && docker-compose -v
+  - docker-compose -f ./docker-compose-build.yaml build
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push tontnm/udagram-frontend:v5
+  - docker push tontnm/udagram-api-feed:v5
+  - docker push tontnm/udagram-api-user:v5
+  - docker push tontnm/udagram-reverseproxy:v5
